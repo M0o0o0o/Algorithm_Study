@@ -1,3 +1,4 @@
+#해당 문제는 '이것이 취업을 위한 코딩 테스트다'의 문제입니다.
 #행은 숫자, 열은 a~h
 data = input();
 row = data[1]-1
@@ -13,3 +14,4 @@ for index in move :
     continue
   
   result += 1
+

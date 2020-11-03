@@ -1,3 +1,5 @@
+##해당 문제는 '이것이 취업을 위한 코딩 테스트다'의 문제입니다.
+
 print('hello')
 n, m, k = map(int, input().split())
 lst = list(map(int, input().split()))
