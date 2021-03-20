@@ -15,14 +15,15 @@ for _ in range(int(input())) :
         u, v, c, d = map(int, input().split())
         list[u].append([v,c,d])
 
-    dp = [[INF] * (m+1) for _ in range(n+1)]
+    dp = [[INF] * (m+1) for _ in range(n+1)] // 
     dp[1][0] = 0
     for money in range(m+1) :
         for here in range(1, n+1) :
             if dp[here][money] == INF : # 경로가 없는 경우
                 continue
 
-            h_dis = dp[here][money]
+            h_dis = dp[here][money] #here 공항에 money 비용으로 가는데 걸리는 시간(진행상황까지는 최소시간이다) 
+            
             for there,t_m, t_d in list[here] :
                 if money + t_m > m :
                     continue
