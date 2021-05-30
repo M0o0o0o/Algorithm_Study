@@ -28,6 +28,8 @@ def solution(food_times, k) :
     previous = 0 # 직전에 다 먹은 음식 시간 
     length = len(food_times) # 남은 음식의 개수 
 
+    print(q)
+
     while sum_value + ((q[0][0] - previous) * length) <= k :
         now = heapq.heappop(q)[0]
         sum_value += (now - previous) * length
