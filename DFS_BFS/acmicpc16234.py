@@ -9,14 +9,62 @@
 # 연합을 해체하고, 모든 국경선을 닫는다.
 
 
-# BFS를 이용해 풀이 
+# BFS를 이용해 풀이
 
-n, l, r = map(int ,input().split())
+from collections import deque
+
+
+def solution(x, y, index):
+    united = []
+    united.append((x, y))
+    q = deque()
+    q.append((x, y))
+
+    country[x][y] = index  # 현재 연합의 번호 할당
+    summary = graph[x][y]
+    count = 1
+
+    while q:
+        x, y = q.popleft()
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+
+            if nx >= 0 and nx < n and ny >= 0 and ny < n and country[nx][ny] == - 1:
+                if l <= abs(graph[nx][ny] - graph[x][y]) <= r:
+                    q.append((nx, ny))
+                    country[nx][ny] = index
+                    summary += graph[nx][ny]
+                    count += 1
+                    united.append((nx, ny))
+
+    for i, j in united:
+        graph[i][j] = summary // count
+
+
+n, l, r = map(int, input().split())
 
 graph = []
+division = []
+dx = [-1, 0, 1, 0]
+dy = [0, 1, 0, -1]
 
-for _ in range(n) :
-    graph.append(list(map(int,input().split())))
+for _ in range(n):
+    graph.append(list(map(int, input().split())))
 
-unionGraph = [[0]*n for _ in range(n)] 
-print(unionGraph)
+unionGraph = [[0]*n for _ in range(n)]
+result = 0
+
+while True:
+    country = [[-1] * n for _ in range(n)]
+    index = 0
+    for i in range(n):
+        for j in range(n):
+            if country[i][j] == -1:
+                solution(i, j, index)
+                index += 1
+
+    if index == n * n:
+        break
+    result += 1
+print(result)
