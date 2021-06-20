@@ -1,7 +1,5 @@
 # https://www.acmicpc.net/problem/10825
 
-from functools import cmp_to_key
-
 
 n = int(input())
 lst = []
@@ -14,3 +12,4 @@ new_lst = sorted(lst, key=lambda x: (-int(x[1]), int(x[2]), -int(x[3]), x[0]))
 
 for i in range(n):
     print(new_lst[i][0])
+
