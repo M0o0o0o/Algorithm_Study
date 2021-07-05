@@ -24,7 +24,7 @@ for _ in range(e) :
   a, b, cost = map(int, input().split())
   edges.append((cost, a, b))
 
-edges.sort
+edges.sort()
 
 for edge in edges :
   cost, a, b = edge
