@@ -55,7 +55,7 @@ for edge in edges:
 print(result)
 
 
-# 5 
+# 5 d
 # 11 -15 -15
 # 14 -5 -15
 # -1 -1 -5
