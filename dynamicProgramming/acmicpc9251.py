@@ -20,3 +20,6 @@ for i in range(1, aLen+1) :
 
 
 print(result)
+
+for i in range(aLen+1) :
+    print(dp[i])
