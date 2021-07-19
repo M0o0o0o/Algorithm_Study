@@ -12,7 +12,6 @@ bw = lst[n//2:]
 asum = []
 bsum = []
 
-
 def recur(arr, wsum, l ,w) :
     if l >= len(arr) :
         wsum.append(w)
