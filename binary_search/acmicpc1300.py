@@ -20,3 +20,7 @@ while start <= end :
         end = mid - 1
 
 print(start)
+
+
+# i번째 행의 최댓값은 i * n이다. 따라서 i번째 행에서 m보다 작은 값의 개수는 
+# m//i나 n이 된다.
