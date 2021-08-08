@@ -4,7 +4,3 @@ def solution(numbers):
     
     return str(int(''.join(numbers)))
 
-numbers = ['3', '30', '34', '5', '9']
-
-numbers.sort(key=lambda x: x * 3, reverse=True)
-print(numbers)
