@@ -3,6 +3,14 @@
 n = int(input())
 
 for i in range(1, n) :
-    print('*' * i)
+    print('*' * i , end = '')
+    for _ in range(n-i) : print(' ', end = '')
+    for _ in range(n-i) : print(' ', end = '')
+    print('*' * i , end = '')
+    print()
 for i in range(n, 0, -1) :
-    print('*' * i)
+    print('*' * i , end = '')
+    for _ in range(n-i) : print(' ', end = '')
+    for _ in range(n-i) : print(' ', end = '')
+    print('*' * i , end = '')
+    print()
