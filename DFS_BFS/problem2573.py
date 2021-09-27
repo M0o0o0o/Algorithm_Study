@@ -1,5 +1,7 @@
 # https://www.acmicpc.net/problem/2573
+
 from collections import deque
+
 n, m = map(int,input().split())
 answer = 0
 graph = []
@@ -33,10 +35,12 @@ def minus(x,y) :
 
 while True : 
     counting = [[0] * m for _ in range(n)]
+
     for i in range(n) :
         for j in range(m) :
             if graph[i][j] > 0 :
                 minus(i, j)
+
     for i in range(n) :
         for j in range(m) :
             if counting[i][j] > 0 :
@@ -57,14 +61,13 @@ while True :
                 visited[i][j] = True
                 q.append((i,j))
                 bfs()
+
     if count > 1 :
         break
     if count == 0 :
         answer = 0
         break
-
-for i in range(n) :
-    print(graph[i])                   
+          
     
 print(answer)
 
