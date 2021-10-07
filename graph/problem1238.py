@@ -2,9 +2,9 @@
 import heapq
 
 n, m, target = map(int,input().split())
-
 INF = int(1e9)
 graph = [[] for i in range(n+1)]
+answer = [INF] * (n)
 
 for _ in range(m):
     a, b, c = map(int, input().split())
@@ -27,12 +27,13 @@ def dijkstra(start) :
 
     return distance
 
-answer = [INF] * (n)
+
 for i in range(1, n+1) :
     _distance = dijkstra(i)
     answer[i-1] = _distance[target]
 
 _distance = dijkstra(target)
+
 for i in range(1, n+1) :
     answer[i-1] += _distance[i]
 
