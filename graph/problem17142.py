@@ -11,26 +11,22 @@ def bfs(select) :
 
     while q : 
         x, y = q.popleft()
-        flag = False
         count = 0
         for i in range(4) :
             nx, ny = x + dx[i], y + dy[i]
             if 0 <= nx < n and 0 <= ny < n and visited[nx][ny] == 0 and graph[nx][ny] in [0,2]  :
-                if graph[nx][ny] == 0 : flag = True
                 visited[nx][ny] = visited[x][y] + 1
                 count += 1
                 q.append((nx,ny))
 
-        if not flag : 
-            for _ in range(len(q) - count, len(q)) :
-                visited[nx][ny] -= 1 
-
-    time = 0
+    time = 1
     for i in range(n) :
         for j in range(n) :
             if visited[i][j] == 0 and graph[i][j] in [0,2] :
                 return int(1e9)
-            time = max(time, visited[i][j])
+            if visited[i][j] != 0 and graph[i][j] == 0 :
+                time = max(time, visited[i][j])
+
     return time -1
 
 n, m = map(int,input().split())
