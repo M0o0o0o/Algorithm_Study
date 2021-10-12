@@ -2,8 +2,8 @@
 
 lst = []
 a, b = map(int,input().split())
-answer = 0
-count = 0
+answer,count = 0, 0
+
 for i in range(1, 1001) :
     for j in range(i) :
         count += 1
