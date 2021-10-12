@@ -19,4 +19,4 @@ for c in range(3, n + 1):
                 ways[r][c][1] = sum(ways[r - 1][c - 1])
 
 
-print(sum(ways[n][n]))
+print(sum(ways[n][n]))                                   
