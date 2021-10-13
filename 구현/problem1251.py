@@ -8,8 +8,6 @@ for i in range(1,len(s)-2) :
         a,b,c = s[:i], s[i:j], s[j:]
         answer.append(a[::-1] + b[::-1] + c[::-1])
       
-
-
 answer.sort()
 print(answer[0])
 #  0 1 2 3 4 5 6
