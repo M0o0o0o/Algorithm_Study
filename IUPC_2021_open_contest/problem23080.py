@@ -1,4 +1,5 @@
 # https://www.acmicpc.net/problem/23080
+
 n = int(input())
 secret = input()
 answer = secret[0]
