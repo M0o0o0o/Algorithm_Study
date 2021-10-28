@@ -17,6 +17,6 @@ for _ in range(int(input())) :
     else:
         b = b % 4
         if b == 0:
-            print((a**4) % 10 % 10 % 10)
+            print((a**4) % 10)
         else:
-            print((a**b) % 10 % 10 % 10)
+            print((a**b) % 10)
