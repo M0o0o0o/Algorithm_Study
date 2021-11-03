@@ -14,7 +14,7 @@ arr = list(arr)
 for i in range(len(arr)) :
     arr[i] = (len(arr[i]), arr[i])
 
-arr.sort(key=lambda x:(x[0], x[1]));
+arr.sort(key=lambda x:(x[0], x[1])); 
 
 for l, value in arr :
     print(value)
