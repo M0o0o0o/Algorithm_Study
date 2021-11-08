@@ -35,9 +35,9 @@ for i in range(1,n+1) :
     if ans > cost :
         ans = cost 
         ans_index = [i]
-    elif ans == cost :
+    if ans == cost :
         ans_index.append(i)
-
+    
 for i in sorted(ans_index) :
     print(i, end = ' ')
 
