@@ -17,8 +17,7 @@ def bfs() :
             if 0 <= nx < n and 0 <= ny < n and left <= graph[nx][ny] <= right and not visited[nx][ny] :
                 q.append((nx,ny))
                 visited[nx][ny] = True
-                
-    if visited[n-1][n-1] :
+    if visited[n-1][n-1] != int(1e9):
         return True
     else :
         return False
