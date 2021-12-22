@@ -1,0 +1,4 @@
+# https://www.acmicpc.net/problem/11944
+
+n, m = map(int, input().split())
+print((str(n) * n)[:m])
