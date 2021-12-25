@@ -1,61 +1,35 @@
 # https://www.acmicpc.net/problem/1517
+import sys 
+input = sys.stdin.readline
 
-
-# def mergeSort(lst) :
-#     global ans
-#     n = len(lst)
-    
-#     if n <= 1 : return
-    
-#     mid = n // 2 
-#     lefts = lst[:mid]
-#     rights = lst[mid:] 
-    
-#     mergeSort(lefts)
-#     mergeSort(rights)
-    
-#     left, right, now = 0, 0, 0
-    
-#     while left < len(lefts) and right < len(rights) : 
-#         if lefts[left] < rights[right] :
-#             lst[now] = lefts[left]
-#             left += 1
-#             now += 1
-#             ans += 1
-#         else :
-#             lst[now] = rights[right]
-#             right += 1
-#             now += 1
-#             ans += 1
-    
-#     while left < len(lefts) :
-#         lst[now] = lefts[left]
-#         left += 1
-#         now += 1
-#     while right < len(rights) :
-#         lst[now] = rights[right]
-#         right += 1
-#         now += 1
+def mergeSort(start, end) :
+    global cnt
+    if start < end : 
+        mid = (start + end) // 2
+        mergeSort(start, mid)
+        mergeSort(mid + 1, end)
         
-        
-# N = int(input())
-# lst = list(map(int, input().split()))
-# ans = 0
+        a = start
+        b = mid + 1
+        buf = []
+        while a <= mid and b <= end :
+            if lst[a] <= lst[b] : 
+                buf.append(lst[a])
+                a += 1
+            else : 
+                buf.append(lst[b])
+                b += 1
+                cnt += (mid - a + 1)
+        if a <= mid : 
+            buf += lst[a:mid + 1]
+        if b <= end :
+            buf += lst[b:end + 1]
+            
+        for i in range(len(buf)) : 
+            lst[start + i] = buf[i]
 
-# mergeSort(lst) 
-# print(ans)
-
-
-
-def bubble_sort(arr):
-    global ans
-    for i in range(len(arr) - 1, 0, -1):
-        for j in range(i):
-            if arr[j] > arr[j + 1]:
-                ans += 1
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-arr = [5,4,3,2,1]
-ans = 0
-
-bubble_sort(arr)
-print(ans)
+n = int(input())
+lst = list(map(int, input().split()))
+cnt = 0
+mergeSort(0, n-1)
+print(cnt)
