@@ -17,8 +17,7 @@ def init(start, end, index):
         return tree[index]
     mid = (start + end) // 2
     # 좌측 노드와 우측 노드를 채워주면서 부모 노드의 값을 채워준다.
-    tree[index] = init(start, mid, index * 2) + \
-        init(mid + 1, end, index * 2 + 1)
+    tree[index] = init(start, mid, index * 2) + init(mid + 1, end, index * 2 + 1)
     # print('======left node + right node ========== ', index, tree[index])
     return tree[index]
 
