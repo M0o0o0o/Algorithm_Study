@@ -14,14 +14,13 @@ def interval_sum(start, end, index, left, right):
 
 
 def update(start, end, index, what, value):
-    if what < start or what > end:
+    if start == end : 
+        tree[index] = value
         return
-    tree[index] += value
-    if start == end:
-        return
-    mid = (start + end) // 2
-    update(start, mid, index * 2, what, value)
-    update(mid + 1, end, index * 2 + 1, what, value)
+    mid = (start + end ) // 2
+    if what <= mid : update(start, mid, index * 2, what ,value)
+    else : update(mid + 1, end, index * 2 + 1, what, value)
+    tree[index] = tree[index * 2] + tree[index * 2 + 1]
 
 
 n, m = map(int, input().split())
