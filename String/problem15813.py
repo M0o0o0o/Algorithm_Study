@@ -3,6 +3,5 @@
 n = int(input())
 ans = 0
 for s in input() :
-   ans += ord(s) - 64
-   
+    ans += ord(s) - 64
 print(ans) 
