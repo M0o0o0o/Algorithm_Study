@@ -7,3 +7,4 @@ for _ in range(int(input())) :
         string[i] = chr((a * (ord(string[i]) - 65) + b) % 26 + 65)
     print(''.join(string))
     
+    
