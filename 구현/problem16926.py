@@ -32,7 +32,7 @@ def rotate(sx,sy,ex,ey) :
             isRotate = True
             break        
 
-for _ in range(r % ((n*2) + (m*2) - 4)) :
+for _ in range(r) :
     sx, sy = 0, 0 
     while True : 
         if sx != n-sx and sy != m - sy:
@@ -46,4 +46,3 @@ for i in range(n) :
     for j in range(m) :
         print(arr[i][j], end = ' ')
     print()
-
