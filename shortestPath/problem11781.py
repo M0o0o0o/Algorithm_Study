@@ -17,30 +17,39 @@ for _ in range(m):
 q = []
 heapq.heappush(q, (0, 1))
 distance[1] = 0
-
 while q:
     dist, now = heapq.heappop(q)
     if distance[now] < dist:
         continue
     for node, length, jam in graph[now]:
-        cost = dist + length
-        if jam == 1 and ((dist <= s <= dist + length) or (dist <= e <= dist + length)):
-            if dist <= s <= cost:
-                cost = dist + (s - dist)
-                remain_d = length - s  # 3
-                remain_m = e-s  # 8
-                remain_m_d = remain_m / 2  # 4
-                if remain_d <= remain_m_d:
-                    cost += remain_d * 2
-                else:
-                    cost += remain_m + (remain_d - remain_m_d)
-            else:  # 시작부터 퇴근시간에 걸리는 경우
-                minute = e - dist  # 5분
-                minute_d = minute / 2
-                cost = dist + minute + (length - minute_d)
+
+        if not jam or dist >= e or (dist+length) <= s : 
+            cost = length
+        elif dist >= s and (dist + length) >= e : 
+            m = e - dist
+            m_d = m / 2 
+            cost = m + (length - m_d)
+        elif dist >= s and (dist + length) < e : 
+            m = e - dist
+            m_d = m / 2
+            if m_d >= length : 
+                cost = length * 2 
+            else : 
+                cost = cost = m + (length - m_d)
+        elif dist < s and length < e : 
+            m = e-s
+            m_d = m / 2
+            cost = s - dist 
+            length -= s
+            if m_d >= length : 
+                cost += length * 2 
+            else : 
+                cost = cost = m + (length - m_d)
+        cost += dist
         if cost < distance[node]:
             distance[node] = cost
             heapq.heappush(q, (cost, node))
+            
 
 ans = 0
 for d in distance:
