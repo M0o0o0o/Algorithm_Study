@@ -4,7 +4,6 @@ from collections import deque
 import sys
 input = sys.stdin.readline
 
-
 K = int(input())
 m, n = map(int, input().split())
 INF = int(1e9)
