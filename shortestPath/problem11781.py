@@ -6,7 +6,7 @@ input = sys.stdin.readline
 
 n, m, s, e = map(int, input().split())
 graph = [[] for _ in range(n+1)]
-INF = float('inf')
+INF = 2**50
 distance = [INF] * (n+1)
 
 for _ in range(m):
@@ -53,7 +53,7 @@ while q:
 
 ans = 0
 for d in distance:
-    if d == float('inf'):
+    if d == INF:
         continue
     ans = max(ans, d)
 if int(ans) == ans:
