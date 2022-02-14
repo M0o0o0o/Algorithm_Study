@@ -3,46 +3,47 @@
 from collections import deque
 
 n, m = map(int, input().split())
-graph = [list(input().strip('\n')) for _ in range(n)]
-dx, dy = [0,1,0,-1], [1,0,-1,0]
-visited =[[False for _ in range(m)] for _ in range(n)]
-fq = deque([])
-jq = deque([])
-ans = int(1e9)
-for i in range(n) :
-    for j in range(m) :
-        if graph[i][j] == 'J' :
-            graph[i][j] = '.'
-            jq.append((i,j, 0))
-            visited[i][j] = True
-        if graph[i][j] == 'F' : 
-            fq.append((i,j))
-            graph[i][j] = 0
-            
-while fq : 
-    x,y = fq.popleft()
-    for i in range(4) :
-        nx, ny = x + dx[i], y + dy[i] 
-        if 0 <= nx < n and 0 <= ny < m and graph[nx][ny] == '.' : 
-            graph[nx][ny] = graph[x][y] + 1
-            fq.append((nx,ny))
+graph = [list(input()) for _ in range(n)]
+dx, dy = [0, 1, 0, -1], [1, 0, -1, 0]
+INF = int(1e9)
+visited = [[INF for _ in range(m)] for _ in range(n)]
+f_visited = [[INF for _ in range(m)] for _ in range(n)]
+fq, jq = deque([]), deque([])
+ans = INF
 
-print(graph)
-            
-while jq : 
-    x, y, t = jq.popleft()
-    t += 1
-    if x == 0 or x == n-1 or y == 0 or y == m-1 : 
-            ans = t 
-            break
-    for i in range(4) : 
-        nx, ny = x + dx[i], y + dy[i] 
-        if 0 <= nx < n and 0 <= ny < m and graph[nx][ny] != '#' and graph[nx][ny] > t and not visited[nx][ny] : 
-            jq.append((nx, ny, t))
-            visited[nx][ny] = True
-            
-if ans == int(1e9) :
+for i in range(n):
+    for j in range(m):
+        if graph[i][j] == 'J':
+            jq.append((i, j))
+            visited[i][j] = 0
+        if graph[i][j] == 'F':
+            fq.append((i, j))
+            f_visited[i][j] = 0
+
+while fq:
+    x, y = fq.popleft()
+    for i in range(4):
+        nx, ny = x + dx[i], y + dy[i]
+        if 0 <= nx < n and 0 <= ny < m and graph[nx][ny] == '.' and f_visited[nx][ny] == INF:
+            fq.append((nx, ny))
+            f_visited[nx][ny] = f_visited[x][y] + 1
+while jq:
+    x, y = jq.popleft()
+    for i in range(4):
+        nx, ny = x + dx[i], y + dy[i]
+        if 0 <= nx < n and 0 <= ny < m and graph[nx][ny] == '.' and visited[nx][ny] == INF:
+            jq.append((nx, ny))
+            visited[nx][ny] = visited[x][y] + 1
+
+
+for x in range(n):
+    for y in range(m):
+        if x != 0 and x != n-1 and y != 0 and y != m-1:
+            continue
+        if visited[x][y] < f_visited[x][y]:
+            ans = min(ans, visited[x][y])
+
+if ans == INF:
     print('IMPOSSIBLE')
-else :
-    print(ans)
-            
+else:
+    print(ans + 1)
