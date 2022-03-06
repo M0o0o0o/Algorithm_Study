@@ -1,4 +1,5 @@
 # https://www.acmicpc.net/problem/1267
+
 n = int(input())
 s = list(map(int, input().split()))
 y = 0
