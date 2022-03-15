@@ -7,3 +7,4 @@ for i in range(1, min(n,m) + 1):
         print(i, n//i, m//i)
 
 
+
