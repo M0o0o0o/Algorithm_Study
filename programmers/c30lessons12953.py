@@ -8,8 +8,6 @@ def solution(arr):
             if big % a != 0:
                 flag = False
                 break
-        
-        if flag :
+        if flag:
             return big
         big += 1
-        
