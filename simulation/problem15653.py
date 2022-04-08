@@ -66,5 +66,4 @@ while q:
         if (rx, ry, bx, by) not in visited:
             visited.add((rx, ry, bx, by))
             q.append((rx, ry, bx, by, cnt + 1))
-
 print(-1)
