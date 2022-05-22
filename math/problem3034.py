@@ -1,4 +1,6 @@
 # https://www.acmicpc.net/problem/3034
+
+
 n, w, h = map(int, input().split())
 for i in range(n):
     b = int(input())
