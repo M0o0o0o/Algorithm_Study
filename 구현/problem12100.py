@@ -66,9 +66,3 @@ board = [list(map(int, input().split())) for _ in range(n)]
 ans = max([max(board[i]) for i in range(n)])
 dfs(0, board)
 print(ans)
-
-# n = 4
-# test = [[2, 2, 4, 16], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-# res = move(test, 0)
-# for i in range(4):
-#     print(res[i])
